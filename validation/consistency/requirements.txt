@@ -1,0 +1,5 @@
+bert-score
+pandas
+matplotlib
+openpyxl
+sentence-transformers
