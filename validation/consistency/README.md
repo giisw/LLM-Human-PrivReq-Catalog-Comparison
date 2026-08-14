@@ -20,7 +20,7 @@ A timestamped folder is created: `results_YYYYMMDD_HHMMSS/`, containing:
 
 - **metrics_lines.png**: Line plot of F1, Precision, and Recall by requirement index (trend comparison).
 
-### LABSE
+### LaBSE
 
 **LaBSE** compares requirements and regulatory texts using multilingual sentence embeddings, so similarity scoring works even when requirement and reference are in different languages.
 
@@ -30,9 +30,9 @@ python compare_labse.py --reqfile <PATH_REQUIREMENTS> --reffile <PATH_REFERENCES
 
 #### Output
 
-A timestamped folder is created: `results_YYYYMMDD_HHMMSS/`, containing:
+A timestamped folder is created: `results_labse_YYYYMMDD_HHMMSS/`, containing:
 
-- **labse_results.xlsx**: Excel table with one row per requirement (`id`, `title`, `text`, `num_references`, `best_similarity`, `best_legal_reference`, `best_normative_excerpt`).
+- **labse_results.xlsx**: Excel table with one row per requirement (`id`, `title`, `requirement_text`, `num_valid_references`, `best_cosine_similarity`, `best_legal_reference`, `best_reference_language`, `best_reference_text`).
 
 - **labse_results.json**: Same table as JSON (list of records), using the same field names as the Excel output.
 

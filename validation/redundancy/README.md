@@ -1,14 +1,14 @@
 ## Redundancy
 
-Redundancy is computed using pBERT embeddings (SpaCy-based preprocessing + BERT), measuring pairwise cosine similarity between requirements.
+Redundancy is computed using pBERT embeddings (spaCy-based preprocessing + BERT), measuring pairwise cosine similarity between requirements.
 
 ```
 python pbert_redundancy.py --input <CATALOG> --lang <en|es> --threshold <THRESHOLD> [--top_k <K>] [--excel]
 ```
 
-**--top_k** (optional): keeps only the k nearest neighbors per requirement instead of evaluating/reporting all pairs.
+**--top_k** (optional): after thresholding, retains a redundant pair only if either requirement appears among the other requirement's k nearest neighbors. All pairwise similarities are still computed and exported in `pairs_all`.
 
-**--excel** (optional): additionally exports the similarity matrix and pair lists to Excel format.
+**--excel** (optional): additionally exports the similarity matrix in Excel format (`similarity_matrix.xlsx`). The pair-list and per-requirement XLSX files are generated regardless of this option.
 
 #### Output
 
@@ -22,4 +22,6 @@ A timestamped folder is created under `out/pbert_redundancy/`, containing:
 
 - **clusters.json**: Redundancy clusters built from `pairs_redundant`, including one representative requirement per cluster.
 
-- **similarity_matrix.csv** / **similarity_matrix.xlsx**: NxN cosine similarity matrix across all requirements (diagonal ≈ 1.0), useful for inspection and analysis.
+- **similarity_matrix.csv** / **similarity_matrix.xlsx** (with `--excel`): NxN cosine similarity matrix across all requirements (diagonal ≈ 1.0), useful for inspection and analysis.
+
+- **req_metrics.csv** / **req_metrics.xlsx**: Per-requirement redundancy metrics containing `catalog_id`, `lang_used`, `threshold`, `top_k`, `req_id`, `mean_sim`, and `degree_t`.

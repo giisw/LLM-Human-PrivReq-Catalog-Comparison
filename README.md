@@ -30,3 +30,7 @@ Inside each branch:
 
 - `requirements.txt`  
   Branch-specific Python dependencies (when required).
+
+## Third-party software
+
+The `validation/ambiguity/NALABSpy/` directory contains code derived from the NALABS/NALABSpy project. The upstream software is distributed under the MIT License; the corresponding license notice is preserved in `validation/ambiguity/NALABSpy/LICENSE`.

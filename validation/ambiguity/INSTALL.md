@@ -1,10 +1,10 @@
 ## Install the necessary dependencies
 
 ```
-pip install -r requirements.txt
+pip install -r NALABSpy/requirements.txt
 ```
 
-## Running the command to fix the problem if spacy is not installed
+## If the English spaCy model is not available
 
 ```
 python -m spacy download en_core_web_sm

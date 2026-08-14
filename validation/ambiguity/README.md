@@ -1,28 +1,28 @@
 ## Ambiguity
 
-Ambiguity is assessed using the RCM-based ambiguity detection implemented in **NALABSpy**.
+Ambiguity is assessed using **NALABSpy**, following the dictionary-based requirement-smell approach used by NALABS/RCM.
 
 First, transform the catalog into the NALABSpy input format:
 
 ```
-python catalog_to_nalabs_input.py <CATALOG>
+python catalog_to_nalabs_input.py <CATALOG> <TRANSFORMED_CATALOG>
 ```
 
 Next, you can run the analysis with NALABSpy.
 
 ```
-python NALABS.py -i <TRANSFORMED_CATALOG> --id-header req_id --text-header text -o <OUTPUT_NAME> -A
+python NALABSpy/NALABS.py -i <TRANSFORMED_CATALOG> --id-header req_id --text-header text -o <NALABS_OUTPUT_JSON> -A
 ```
 
 Finally, generate the consolidated report using the reporting script:
 
 ```
-python nalabs_report.py <NABLABS_OUTPUT>
+python nalabs_report.py <NALABS_OUTPUT_JSON> --input-json <TRANSFORMED_CATALOG>
 ```
 
 #### Output
 
-The report generation produces the following files (where `<output_stem>` is the chosen output name):
+By default, the report is generated under `nalabs_runs/<output_stem>_YYYYMMDD_HHMMSS/`, containing the following files:
 
 - **<output_stem>\_summary.json**: Structured summary with catalog-level aggregate metrics (total N, counts and percentages by smell, clean rate, any-issue rate, statistics on issues per requirement, `security_related` tag rate, and notes).
 
